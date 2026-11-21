@@ -1,0 +1,67 @@
+
+/* =====================================
+   INSIGHTLY - BUTTONS
+===================================== */
+
+.button,
+.nav-button,
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all .25s ease;
+}
+
+.button,
+.btn {
+    min-height: 44px;
+    padding: 0 20px;
+    border: none;
+}
+
+.nav-button {
+    min-height: 46px;
+    padding: 0 20px;
+    border: 1px solid #205b49;
+    color: #205b49;
+}
+
+.nav-button:hover {
+    background: #205b49;
+    color: #fff;
+}
+
+.button-dark,
+.btn-dark {
+    background: #205b49;
+    color: #fff;
+}
+
+.button-dark:hover,
+.btn-dark:hover {
+    background: #174537;
+    transform: translateY(-2px);
+}
+
+.button-light,
+.btn-back {
+    background: #edf2ee;
+    color: #53665b;
+}
+
+.button-light:hover,
+.btn-back:hover {
+    background: #dfe9e1;
+}
+
+button:focus-visible,
+a:focus-visible {
+    outline: 3px solid rgba(65, 128, 96, .25);
+    outline-offset: 3px;
+}

@@ -1,0 +1,104 @@
+
+/* =====================================
+   INSIGHTLY - RESPONSIVE
+===================================== */
+
+@media (max-width: 900px) {
+    .page-header {
+        align-items: flex-start;
+    }
+
+    .page-header h1 {
+        font-size: 38px;
+    }
+}
+
+@media (max-width: 700px) {
+    .nav-wrapper {
+        min-height: 75px;
+    }
+
+    .nav-menu {
+        display: none;
+    }
+
+    .nav-button {
+        padding: 0 14px;
+    }
+
+    .page-content,
+    .crud-page {
+        padding: 45px 0 65px;
+    }
+
+    .crud-page h1 {
+        font-size: 34px;
+    }
+
+    .page-header {
+        display: block;
+    }
+
+    .page-header h1 {
+        font-size: 36px;
+    }
+
+    .page-header .button {
+        margin-top: 20px;
+    }
+
+    .form-page {
+        padding: 40px 18px 60px;
+    }
+
+    .form-container {
+        padding: 25px 20px;
+    }
+
+    .form-container h1,
+    .form-header h1 {
+        font-size: 31px;
+    }
+
+    .data-form {
+        padding: 22px;
+    }
+
+    .form-actions {
+        flex-direction: column-reverse;
+    }
+
+    .form-actions .button {
+        width: 100%;
+    }
+
+    .footer-wrapper {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    .crud-page h1 {
+        font-size: 29px;
+    }
+
+    .crud-page > p {
+        font-size: 12px;
+    }
+
+    .crud-page > .btn {
+        width: 100%;
+    }
+
+    .form-container {
+        padding: 22px 17px;
+    }
+
+    .form-container form > button,
+    .form-container form > .btn-back {
+        width: 100%;
+        margin: 7px 0 0;
+    }
+}
