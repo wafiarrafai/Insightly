@@ -65,3 +65,43 @@ a:focus-visible {
     outline: 3px solid rgba(65, 128, 96, .25);
     outline-offset: 3px;
 }
+
+
+/* EXPORT BUTTON */
+
+.page-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.button-export {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 42px;
+    padding: 0 18px;
+    border: 1px solid #205b49;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #205b49;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    transition: .2s ease;
+}
+
+.button-export:hover {
+    background: #f0f7f2;
+}
+
+@media (max-width: 600px) {
+    .page-actions {
+        width: 100%;
+    }
+
+    .page-actions a {
+        flex: 1;
+    }
+}

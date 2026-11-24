@@ -2,11 +2,24 @@
 require_once '../config/database.php';
 
 // Statistik feedback
+
 $statsQuery = mysqli_query($conn, "
     SELECT
         COUNT(*) AS total_feedback,
         COALESCE(AVG(rating), 0) AS average_rating,
-        COALESCE(SUM(CASE WHEN rating >= 4 THEN 1 ELSE 0 END), 0) AS positive_feedback
+
+        COALESCE(SUM(
+            CASE WHEN rating >= 4 THEN 1 ELSE 0 END
+        ), 0) AS positive_feedback,
+
+        COALESCE(SUM(
+            CASE WHEN rating = 3 THEN 1 ELSE 0 END
+        ), 0) AS neutral_feedback,
+
+        COALESCE(SUM(
+            CASE WHEN rating <= 2 THEN 1 ELSE 0 END
+        ), 0) AS negative_feedback
+
     FROM feedback
 ");
 
@@ -20,13 +33,24 @@ $customerQuery = mysqli_query($conn, "
 
 $customerData = mysqli_fetch_assoc($customerQuery);
 
-// Persentase feedback positif
+// Data sentimen
 $totalFeedback = (int) $stats['total_feedback'];
 $positiveFeedback = (int) $stats['positive_feedback'];
+$neutralFeedback = (int) $stats['neutral_feedback'];
+$negativeFeedback = (int) $stats['negative_feedback'];
 
 $positivePercentage = $totalFeedback > 0
     ? ($positiveFeedback / $totalFeedback) * 100
     : 0;
+
+$neutralPercentage = $totalFeedback > 0
+    ? ($neutralFeedback / $totalFeedback) * 100
+    : 0;
+
+$negativePercentage = $totalFeedback > 0
+    ? ($negativeFeedback / $totalFeedback) * 100
+    : 0;
+
 
 // Data rating
 $ratingQuery = mysqli_query($conn, "
@@ -68,6 +92,48 @@ $maxCategory = 1;
 foreach ($categories as $category) {
     $maxCategory = max($maxCategory, (int) $category['total']);
 }
+
+
+// MONTHLY FEEDBACK TREND
+$monthlyQuery = mysqli_query($conn, "
+    SELECT
+        YEAR(feedback_date) AS feedback_year,
+        MONTH(feedback_date) AS feedback_month,
+        COUNT(*) AS total_feedback,
+        ROUND(AVG(rating), 1) AS average_rating
+    FROM feedback
+    WHERE feedback_date >= DATE_SUB(
+        CURDATE(),
+        INTERVAL 6 MONTH
+    )
+    GROUP BY
+        YEAR(feedback_date),
+        MONTH(feedback_date)
+    ORDER BY
+        feedback_year ASC,
+        feedback_month ASC
+");
+
+$monthlyData = [];
+
+while ($row = mysqli_fetch_assoc($monthlyQuery)) {
+    $row['month_label'] = date(
+        'M Y',
+        mktime(0, 0, 0, (int)$row['feedback_month'], 1, (int)$row['feedback_year'])
+    );
+
+    $monthlyData[] = $row;
+}
+
+$maxMonthlyFeedback = 1;
+
+foreach ($monthlyData as $month) {
+    $maxMonthlyFeedback = max(
+        $maxMonthlyFeedback,
+        (int)$month['total_feedback']
+    );
+}
+
 ?>
 
 <?php
@@ -177,24 +243,22 @@ include '../includes/header.php';
 
                     <?php foreach ($ratingData as $rating => $total): ?>
 
-                        <div class="rating-row">
+                    <div class="rating-row">
 
-                            <span class="rating-label">
-                                <?= $rating; ?> ★
-                            </span>
+                        <span class="rating-label">
+                            <?= $rating; ?> ★
+                        </span>
 
-                            <div class="bar-background">
-                                <div
-                                    class="bar-fill"
-                                    style="width: <?= ($total / $maxRating) * 100; ?>%">
-                                </div>
+                        <div class="bar-background">
+                            <div class="bar-fill" style="width: <?= ($total / $maxRating) * 100; ?>%">
                             </div>
-
-                            <span class="bar-value">
-                                <?= $total; ?>
-                            </span>
-
                         </div>
+
+                        <span class="bar-value">
+                            <?= $total; ?>
+                        </span>
+
+                    </div>
 
                     <?php endforeach; ?>
 
@@ -215,38 +279,37 @@ include '../includes/header.php';
 
                     <?php if (count($categories) > 0): ?>
 
-                        <?php foreach ($categories as $category): ?>
+                    <?php foreach ($categories as $category): ?>
 
-                            <div class="category-item">
+                    <div class="category-item">
 
-                                <div class="category-info">
+                        <div class="category-info">
 
-                                    <span>
-                                        <?= htmlspecialchars($category['category']); ?>
-                                    </span>
+                            <span>
+                                <?= htmlspecialchars($category['category']); ?>
+                            </span>
 
-                                    <strong>
-                                        <?= (int) $category['total']; ?>
-                                    </strong>
+                            <strong>
+                                <?= (int) $category['total']; ?>
+                            </strong>
 
-                                </div>
+                        </div>
 
-                                <div class="bar-background">
-                                    <div
-                                        class="bar-fill category-fill"
-                                        style="width: <?= ((int) $category['total'] / $maxCategory) * 100; ?>%">
-                                    </div>
-                                </div>
-
+                        <div class="bar-background">
+                            <div class="bar-fill category-fill"
+                                style="width: <?= ((int) $category['total'] / $maxCategory) * 100; ?>%">
                             </div>
+                        </div>
 
-                        <?php endforeach; ?>
+                    </div>
+
+                    <?php endforeach; ?>
 
                     <?php else: ?>
 
-                        <p class="empty-insight">
-                            Belum ada data kategori feedback.
-                        </p>
+                    <p class="empty-insight">
+                        Belum ada data kategori feedback.
+                    </p>
 
                     <?php endif; ?>
 
@@ -256,6 +319,135 @@ include '../includes/header.php';
 
         </section>
 
+
+        <!-- SENTIMENT ANALYSIS -->
+        <section class="sentiment-section">
+
+            <div class="sentiment-heading">
+                <span class="section-label">CUSTOMER SENTIMENT</span>
+                <h2>Analisis Kepuasan Pelanggan</h2>
+                <p>
+                    Pengelompokan feedback berdasarkan rating yang diberikan pelanggan.
+                </p>
+            </div>
+
+            <div class="sentiment-grid">
+
+                <div class="sentiment-card positive">
+                    <span class="sentiment-icon">☺</span>
+                    <h3>Positif</h3>
+
+                    <strong>
+                        <?= number_format($positivePercentage, 1); ?>%
+                    </strong>
+
+                    <p>
+                        <?= $positiveFeedback; ?> feedback
+                    </p>
+                </div>
+
+                <div class="sentiment-card neutral">
+                    <span class="sentiment-icon">😐</span>
+                    <h3>Netral</h3>
+
+                    <strong>
+                        <?= number_format($neutralPercentage, 1); ?>%
+                    </strong>
+
+                    <p>
+                        <?= $neutralFeedback; ?> feedback
+                    </p>
+                </div>
+
+                <div class="sentiment-card negative">
+                    <span class="sentiment-icon">☹</span>
+                    <h3>Negatif</h3>
+
+                    <strong>
+                        <?= number_format($negativePercentage, 1); ?>%
+                    </strong>
+
+                    <p>
+                        <?= $negativeFeedback; ?> feedback
+                    </p>
+                </div>
+
+            </div>
+
+            <?php
+            if ($totalFeedback === 0) {
+                $sentimentMessage = 'Belum ada feedback untuk dianalisis.';
+            } elseif ($negativeFeedback > $positiveFeedback) {
+                $sentimentMessage = 'Feedback negatif lebih banyak daripada feedback positif. Perhatikan kembali aspek layanan yang perlu ditingkatkan.';
+            } elseif ($positiveFeedback > $negativeFeedback) {
+                $sentimentMessage = 'Feedback positif lebih banyak daripada feedback negatif. Pertahankan kualitas layanan dan pengalaman pelanggan.';
+            } else {
+                $sentimentMessage = 'Jumlah feedback positif dan negatif sama. Evaluasi feedback pelanggan untuk menemukan area perbaikan.';
+            }
+            ?>
+
+            <div class="sentiment-insight">
+                <strong>Ringkasan Analisis</strong>
+                <p><?= htmlspecialchars($sentimentMessage); ?></p>
+            </div>
+
+        </section>
+
+
+        <!-- MONTHLY FEEDBACK TREND -->
+        <section class="monthly-section">
+
+            <div class="monthly-heading">
+                <div>
+                    <span class="section-label">PERFORMANCE OVERVIEW</span>
+                    <h2>Monthly Feedback Trend</h2>
+                    <p>Perkembangan jumlah feedback dan rata-rata rating pelanggan.</p>
+                </div>
+            </div>
+
+            <?php if (count($monthlyData) > 0): ?>
+
+            <div class="monthly-chart">
+
+                <?php foreach ($monthlyData as $month): ?>
+
+                <div class="monthly-item">
+
+                    <div class="monthly-info">
+                        <span><?= htmlspecialchars($month['month_label']); ?></span>
+
+                        <div>
+                            <strong>
+                                <?= (int)$month['total_feedback']; ?> feedback
+                            </strong>
+
+                            <small>
+                                <?= number_format((float)$month['average_rating'], 1); ?> / 5 ★
+                            </small>
+                        </div>
+                    </div>
+
+                    <div class="monthly-bar-background">
+                        <div class="monthly-bar-fill"
+                            style="width: <?= ((int)$month['total_feedback'] / $maxMonthlyFeedback) * 100; ?>%">
+                        </div>
+                    </div>
+
+                </div>
+
+                <?php endforeach; ?>
+
+            </div>
+
+            <?php else: ?>
+
+            <p class="empty-insight">
+                Belum ada data feedback dalam enam bulan terakhir.
+            </p>
+
+            <?php endif; ?>
+
+        </section>
 
         <!-- INFORMATION -->
         <section class="insight-note">

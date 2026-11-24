@@ -1,6 +1,9 @@
-
 /* =====================================
    INSIGHTLY - CRUD PAGE
+===================================== */
+
+/* =====================================
+   PAGE LAYOUT
 ===================================== */
 
 .crud-page,
@@ -11,21 +14,26 @@
     padding: 65px 0 90px;
 }
 
-/* PAGE HEADER */
 
-.crud-page h1 {
+/* =====================================
+   PAGE HEADER
+===================================== */
+
+.crud-page h1,
+.page-header h1 {
     color: #183c32;
     font-size: clamp(32px, 4vw, 46px);
     font-weight: 700;
     letter-spacing: -1.8px;
-    margin-bottom: 12px;
+    margin: 0 0 12px;
 }
 
-.crud-page > p {
+.crud-page > p,
+.page-header p {
     color: #7b8982;
     font-size: 14px;
-    margin-bottom: 30px;
     line-height: 1.7;
+    margin: 0 0 30px;
 }
 
 .page-header {
@@ -36,19 +44,10 @@
     margin-bottom: 35px;
 }
 
-.page-header h1 {
-    color: #183c32;
-    font-size: 46px;
-    letter-spacing: -2px;
-}
 
-.page-header p {
-    margin-top: 12px;
-    color: #7b8982;
-    font-size: 14px;
-}
-
-/* ADD BUTTON */
+/* =====================================
+   ADD BUTTON
+===================================== */
 
 .crud-page > .btn {
     display: inline-flex;
@@ -56,12 +55,16 @@
     justify-content: center;
     padding: 13px 20px;
     margin-bottom: 25px;
+
     background: #205b49;
     color: #fff;
+
     border-radius: 8px;
     font-size: 13px;
     font-weight: 600;
-    transition: .25s ease;
+    text-decoration: none;
+
+    transition: 0.25s ease;
 }
 
 .crud-page > .btn:hover {
@@ -69,15 +72,20 @@
     transform: translateY(-2px);
 }
 
-/* TABLE CONTAINER */
+
+/* =====================================
+   TABLE
+===================================== */
 
 .table-container {
     width: 100%;
     overflow-x: auto;
+
     background: #fff;
     border: 1px solid #e5ebe7;
     border-radius: 14px;
-    box-shadow: 0 8px 30px rgba(30, 65, 49, .045);
+
+    box-shadow: 0 8px 30px rgba(30, 65, 49, 0.045);
 }
 
 table {
@@ -92,25 +100,29 @@ thead {
 
 th {
     padding: 18px 20px;
+
     color: #718078;
     font-size: 11px;
     font-weight: 700;
-    letter-spacing: .8px;
+    letter-spacing: 0.8px;
     text-align: left;
     text-transform: uppercase;
+
     border-bottom: 1px solid #e8eee9;
 }
 
 td {
     padding: 19px 20px;
+
     color: #52635a;
     font-size: 13px;
     line-height: 1.6;
+
     border-bottom: 1px solid #edf1ee;
 }
 
 tbody tr {
-    transition: background .2s ease;
+    transition: background 0.2s ease;
 }
 
 tbody tr:hover {
@@ -129,12 +141,16 @@ td strong {
     color: #183c32;
 }
 
-/* TABLE ACTIONS */
+
+/* =====================================
+   TABLE ACTIONS
+===================================== */
 
 .table-actions {
     display: flex;
     align-items: center;
     gap: 8px;
+    white-space: nowrap;
 }
 
 .table-actions a,
@@ -142,11 +158,15 @@ td a {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+
     padding: 7px 12px;
+
     border-radius: 6px;
     font-size: 11px;
     font-weight: 600;
-    transition: .2s ease;
+    text-decoration: none;
+
+    transition: 0.2s ease;
 }
 
 .action-edit,
@@ -169,7 +189,10 @@ td a[href*="edit.php"]:hover {
     background: #f5deda;
 }
 
-/* DELETE FORM */
+
+/* =====================================
+   DELETE FORM
+===================================== */
 
 td form {
     display: inline-block;
@@ -178,21 +201,28 @@ td form {
 
 td form button {
     padding: 7px 12px;
+
     border: none;
     border-radius: 6px;
+
     background: #fbefed;
     color: #b44f47;
+
     font-size: 11px;
     font-weight: 600;
+
     cursor: pointer;
-    transition: .2s ease;
+    transition: 0.2s ease;
 }
 
 td form button:hover {
     background: #f5deda;
 }
 
-/* EMPTY STATE */
+
+/* =====================================
+   EMPTY STATE
+===================================== */
 
 .empty-state {
     padding: 70px 20px;
@@ -206,6 +236,467 @@ td form button:hover {
 
 .empty-state p {
     margin: 8px auto 22px;
+
     color: #89978f;
     font-size: 13px;
+}
+
+
+/* =====================================
+   FEEDBACK FILTER
+===================================== */
+
+.filter-form {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+
+    width: 100%;
+    box-sizing: border-box;
+
+    margin-bottom: 25px;
+    padding: 20px;
+
+    background: #fff;
+    border: 1px solid #e1e9e4;
+    border-radius: 16px;
+}
+
+
+/* DATE RANGE */
+
+.filter-form .date-filter {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    flex: 0 1 390px;
+    min-width: 0;
+}
+
+.filter-form .date-filter input {
+    flex: 1;
+    width: 0;
+    min-width: 0;
+    height: 48px;
+
+    box-sizing: border-box;
+    padding: 0 10px;
+
+    border: 1px solid #e1e9e4;
+    border-radius: 10px;
+
+    background: #fff;
+    color: #285b49;
+
+    font-family: inherit;
+    font-size: 13px;
+}
+
+.filter-form .date-filter span {
+    flex-shrink: 0;
+
+    color: #7b8580;
+    font-size: 13px;
+}
+
+
+/* SEARCH */
+
+.filter-form .filter-search {
+    flex: 1 1 240px;
+    min-width: 180px;
+}
+
+.filter-form .filter-search input {
+    width: 100%;
+    height: 48px;
+
+    box-sizing: border-box;
+    padding: 0 16px;
+
+    border: 1px solid #e1e9e4;
+    border-radius: 10px;
+
+    font-family: inherit;
+    font-size: 14px;
+}
+
+
+/* SELECT */
+
+.filter-form select {
+    flex: 0 1 175px;
+    width: 175px;
+    min-width: 0;
+    height: 48px;
+
+    box-sizing: border-box;
+    padding: 0 32px 0 12px;
+
+    border: 1px solid #e1e9e4;
+    border-radius: 10px;
+
+    background: #fff;
+    color: #285b49;
+
+    font-family: inherit;
+    font-size: 13px;
+
+    cursor: pointer;
+}
+
+.filter-form select[name="sort"] {
+    flex-basis: 190px;
+    width: 190px;
+}
+
+
+/* FILTER BUTTON */
+
+.filter-form button {
+    flex: 0 0 auto;
+
+    min-height: 48px;
+    padding: 0 24px;
+
+    border: none;
+    border-radius: 8px;
+
+    background: #205b49;
+    color: #fff;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.filter-form button:hover {
+    background: #174537;
+}
+
+
+/* RESET */
+
+.filter-form .filter-reset {
+    flex: 0 0 auto;
+
+    padding: 10px 8px;
+
+    color: #718078;
+    font-size: 14px;
+    text-decoration: none;
+
+    white-space: nowrap;
+}
+
+.filter-form .filter-reset:hover {
+    color: #205b49;
+}
+
+
+/* FILTER FOCUS */
+
+.filter-form input:focus,
+.filter-form select:focus {
+    outline: none;
+    border-color: #205b49;
+}
+
+
+/* =====================================
+   CUSTOMER SEARCH
+===================================== */
+
+.customer-search {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    margin-bottom: 25px;
+    padding: 16px;
+
+    background: #fff;
+    border: 1px solid #e5ebe7;
+    border-radius: 12px;
+}
+
+.search-input {
+    flex: 1;
+    min-width: 0;
+}
+
+.search-input input {
+    width: 100%;
+    height: 44px;
+
+    box-sizing: border-box;
+    padding: 0 15px;
+
+    border: 1px solid #e1e8e3;
+    border-radius: 8px;
+
+    outline: none;
+
+    font-family: inherit;
+    font-size: 13px;
+}
+
+.search-input input:focus {
+    border-color: #205b49;
+}
+
+.customer-search button {
+    height: 44px;
+    padding: 0 20px;
+
+    border: none;
+    border-radius: 8px;
+
+    background: #205b49;
+    color: #fff;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+.customer-search button:hover {
+    background: #174537;
+}
+
+
+/* CUSTOMER SELECT */
+
+.customer-search select {
+    min-width: 155px;
+    height: 45px;
+
+    padding: 0 42px 0 16px;
+
+    border: 1px solid #e1e9e4;
+    border-radius: 12px;
+
+    background: #fff;
+    color: #285b49;
+
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 500;
+
+    cursor: pointer;
+    outline: none;
+}
+
+.customer-search select:hover,
+.customer-search select:focus {
+    border-color: #285b49;
+}
+
+.search-reset {
+    color: #718078;
+    font-size: 13px;
+    text-decoration: none;
+}
+
+.search-reset:hover {
+    color: #205b49;
+}
+
+
+/* =====================================
+   PAGINATION
+===================================== */
+
+/*
+   PENTING:
+   Pagination dibuat satu baris.
+   Jangan pakai flex-direction: column.
+*/
+
+.pagination {
+    display: flex !important;
+
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    width: 100%;
+    margin: 30px 0 40px;
+    padding: 0;
+
+    box-sizing: border-box;
+}
+
+
+/* Kalau ada info + tombol pagination */
+
+.pagination-info {
+    color: #7b8580;
+    font-size: 13px;
+}
+
+
+/* Container nomor halaman */
+
+.pagination-links {
+    display: flex !important;
+
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+}
+
+
+/* Semua tombol pagination */
+
+.pagination a,
+.pagination span,
+.pagination-links a {
+    display: inline-flex !important;
+
+    flex: 0 0 auto !important;
+
+    align-items: center;
+    justify-content: center;
+
+    width: auto;
+    min-width: 44px;
+    height: 44px;
+
+    box-sizing: border-box;
+    padding: 0 14px;
+
+    border: 1px solid #dce8e0;
+    border-radius: 11px;
+
+    background: #fff;
+    color: #205b49;
+
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1;
+
+    text-decoration: none;
+    white-space: nowrap;
+
+    transition: 0.2s ease;
+}
+
+
+/* Hover */
+
+.pagination a:hover,
+.pagination-links a:hover {
+    background: #edf5ef;
+    border-color: #205b49;
+}
+
+
+/* Active */
+
+.pagination .active,
+.pagination .current,
+.pagination-links a.active {
+    background: #205b49;
+    border-color: #205b49;
+    color: #fff;
+}
+
+
+/* =====================================
+   RESPONSIVE
+===================================== */
+
+@media (max-width: 1100px) {
+
+    .filter-form .date-filter {
+        flex: 1 1 100%;
+    }
+
+    .filter-form .filter-search {
+        flex: 1 1 45%;
+    }
+}
+
+
+@media (max-width: 700px) {
+
+    .date-filter {
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+    .date-filter input {
+        flex: 1;
+        min-width: 0;
+    }
+}
+
+
+@media (max-width: 650px) {
+
+    .filter-form {
+        gap: 10px;
+        padding: 14px;
+    }
+
+    .filter-form .date-filter,
+    .filter-form .filter-search {
+        flex: 1 1 100%;
+    }
+
+    .filter-form select,
+    .filter-form select[name="sort"] {
+        flex: 1 1 100%;
+        width: 100%;
+    }
+
+    .filter-form button {
+        flex: 1;
+    }
+
+    .customer-search {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .customer-search button,
+    .customer-search select {
+        width: 100%;
+    }
+
+    /*
+       Pagination tetap horizontal.
+       Kalau layar sempit, halaman boleh scroll,
+       bukan turun ke bawah satu-satu.
+    */
+
+    .pagination {
+        justify-content: flex-start;
+        overflow-x: auto;
+        padding-bottom: 5px;
+    }
+
+    .pagination-links {
+        flex-wrap: nowrap !important;
+    }
+
+    .pagination a,
+    .pagination span,
+    .pagination-links a {
+        flex-shrink: 0 !important;
+    }
 }

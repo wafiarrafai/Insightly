@@ -2,43 +2,34 @@
 
 require_once '../config/database.php';
 
-
-$id = isset($_GET['id'])
-    ? (int) $_GET['id']
-    : 0;
-
-
-if ($id <= 0) {
-
+// Proses hapus hanya boleh melalui POST
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     header('Location: index.php');
     exit;
 }
 
+$id = filter_input(INPUT_POST, 'id', FILTER_VALIDATE_INT);
 
-/* =========================
-   HAPUS DATA
-========================= */
+if (!$id || $id <= 0) {
+    header('Location: index.php');
+    exit;
+}
 
+// Hapus pelanggan berdasarkan ID
 $stmt = mysqli_prepare(
     $conn,
     "DELETE FROM customers WHERE id = ?"
 );
 
-mysqli_stmt_bind_param(
-    $stmt,
-    "i",
-    $id
-);
+mysqli_stmt_bind_param($stmt, "i", $id);
 
-
-mysqli_stmt_execute($stmt);
+if (mysqli_stmt_execute($stmt)) {
+    mysqli_stmt_close($stmt);
+    header('Location: index.php?deleted=success');
+    exit;
+}
 
 mysqli_stmt_close($stmt);
 
-
-/* =========================
-   KEMBALI
-========================= */
-
-header('Location: index.php');
+header('Location: index.php?deleted=failed');
 exit;
