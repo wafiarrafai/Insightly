@@ -334,7 +334,6 @@ include '../includes/header.php';
             <div class="sentiment-grid">
 
                 <div class="sentiment-card positive">
-                    <span class="sentiment-icon">☺</span>
                     <h3>Positif</h3>
 
                     <strong>
@@ -347,7 +346,6 @@ include '../includes/header.php';
                 </div>
 
                 <div class="sentiment-card neutral">
-                    <span class="sentiment-icon">😐</span>
                     <h3>Netral</h3>
 
                     <strong>
@@ -360,7 +358,6 @@ include '../includes/header.php';
                 </div>
 
                 <div class="sentiment-card negative">
-                    <span class="sentiment-icon">☹</span>
                     <h3>Negatif</h3>
 
                     <strong>
@@ -469,7 +466,7 @@ include '../includes/header.php';
             </div>
 
             <a href="../feedback/index.php" class="button button-dark">
-                Lihat Semua Feedback →
+                Lihat Semua Feedback
             </a>
 
         </section>

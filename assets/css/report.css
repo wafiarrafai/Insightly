@@ -1,4 +1,10 @@
 
+/* =====================================
+   INSIGHTLY - REPORT PAGE
+===================================== */
+
+/* REPORT PAGE */
+
 .report-page {
     min-height: 70vh;
     padding: 55px 0;
@@ -11,6 +17,8 @@
     margin: 0 auto;
 }
 
+/* PAGE HEADING */
+
 .report-heading {
     margin-bottom: 30px;
 }
@@ -19,22 +27,28 @@
     margin-top: 10px;
     color: #24483a;
     font-size: 28px;
+    font-weight: 700;
 }
 
 .report-heading p {
     margin-top: 8px;
     color: #89968e;
     font-size: 14px;
+    line-height: 1.6;
 }
+
+/* REPORT FILTER */
 
 .report-filter {
     display: flex;
-    align-items: end;
+    align-items: flex-end;
     flex-wrap: wrap;
     gap: 15px;
+
     padding: 22px;
     margin-bottom: 22px;
-    background: #fff;
+
+    background: #ffffff;
     border: 1px solid #e5ebe7;
     border-radius: 12px;
 }
@@ -53,24 +67,53 @@
     font-weight: 600;
 }
 
-.report-field input {
+.report-field input,
+.report-field select {
+    width: 100%;
     height: 43px;
     padding: 0 12px;
+
     border: 1px solid #e1e8e3;
     border-radius: 7px;
+
+    background: #ffffff;
+    color: #40534a;
     font-family: inherit;
+    font-size: 13px;
+    outline: none;
+    transition: border-color 0.2s ease;
 }
+
+.report-field input:focus,
+.report-field select:focus {
+    border-color: #205b49;
+}
+
+/* FILTER BUTTON */
 
 .report-button {
     height: 43px;
     padding: 0 20px;
+
     border: none;
     border-radius: 7px;
+
     background: #205b49;
-    color: #fff;
+    color: #ffffff;
+
+    font-size: 13px;
     font-weight: 600;
+    font-family: inherit;
+
     cursor: pointer;
+    transition: background 0.2s ease;
 }
+
+.report-button:hover {
+    background: #174d3e;
+}
+
+/* REPORT PERIOD */
 
 .report-period {
     margin: 20px 0;
@@ -80,7 +123,10 @@
 
 .report-period strong {
     color: #205b49;
+    font-weight: 600;
 }
+
+/* REPORT STATISTICS */
 
 .report-stats {
     display: grid;
@@ -91,9 +137,16 @@
 
 .report-stat {
     padding: 22px;
-    background: #fff;
+
+    background: #ffffff;
     border: 1px solid #e5ebe7;
     border-radius: 11px;
+
+    transition: transform 0.2s ease;
+}
+
+.report-stat:hover {
+    transform: translateY(-3px);
 }
 
 .report-stat span {
@@ -104,28 +157,37 @@
 .report-stat strong {
     display: block;
     margin-top: 12px;
+
     color: #205b49;
     font-size: 27px;
+    font-weight: 700;
 }
+
+/* REPORT TABLE SECTION */
 
 .report-table-section {
     padding: 25px;
-    background: #fff;
+
+    background: #ffffff;
     border: 1px solid #e5ebe7;
     border-radius: 12px;
 }
+
+/* TABLE HEADING */
 
 .report-table-heading {
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 12px;
+
     margin-bottom: 20px;
 }
 
 .report-table-heading h2 {
     color: #24483a;
     font-size: 18px;
+    font-weight: 700;
 }
 
 .report-table-heading span {
@@ -133,10 +195,14 @@
     font-size: 12px;
 }
 
+/* TABLE WRAPPER */
+
 .report-table-wrapper {
     width: 100%;
     overflow-x: auto;
 }
+
+/* REPORT TABLE */
 
 .report-table {
     width: 100%;
@@ -155,32 +221,83 @@
     color: #53665b;
     background: #f7f9f7;
     font-weight: 600;
+    white-space: nowrap;
 }
 
 .report-table td {
     color: #68776e;
 }
 
+.report-table tbody tr:hover {
+    background: #f9fbf9;
+}
+
+/* EMPTY DATA */
+
 .report-empty {
     text-align: center !important;
     padding: 30px !important;
+    color: #89968e !important;
 }
+
+/* ERROR MESSAGE */
 
 .report-error {
     padding: 15px;
+
     color: #a33d36;
     background: #fbefed;
+
+    border: 1px solid #f3d9d5;
     border-radius: 8px;
+
+    font-size: 13px;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 768px) {
+
+    .report-page {
+        padding: 40px 0;
+    }
+
+    .report-container {
+        width: 92%;
+    }
+
+    .report-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .report-table-section {
+        padding: 18px;
+    }
 }
 
 @media (max-width: 600px) {
+
+    .report-heading h1 {
+        font-size: 24px;
+    }
+
     .report-filter {
-        align-items: stretch;
         flex-direction: column;
+        align-items: stretch;
+        padding: 18px;
+    }
+
+    .report-field {
+        width: 100%;
+        min-width: 0;
     }
 
     .report-button {
         width: 100%;
+    }
+
+    .report-stats {
+        grid-template-columns: 1fr;
     }
 
     .report-table-section {

@@ -10,11 +10,13 @@
     align-items: center;
     justify-content: center;
     gap: 8px;
+
     border-radius: 8px;
     font-family: inherit;
     font-size: 13px;
     font-weight: 600;
     cursor: pointer;
+
     transition: all .25s ease;
 }
 
@@ -25,49 +27,71 @@
     border: none;
 }
 
+/* =====================================
+   NAV BUTTON
+===================================== */
+
 .nav-button {
     min-height: 46px;
     padding: 0 20px;
-    border: 1px solid #205b49;
-    color: #205b49;
+
+    border: 1px solid #19145B;
+    color: #19145B;
+    background: transparent;
 }
 
 .nav-button:hover {
-    background: #205b49;
-    color: #fff;
+    background: #19145B;
+    color: #ffffff;
 }
+
+/* =====================================
+   PRIMARY / DARK BUTTON
+===================================== */
 
 .button-dark,
 .btn-dark {
-    background: #205b49;
-    color: #fff;
+    background: #FF633E;
+    color: #ffffff;
 }
 
 .button-dark:hover,
 .btn-dark:hover {
-    background: #174537;
+    background: #d5340c;
+    color: #ffffff;
     transform: translateY(-2px);
 }
 
+/* =====================================
+   LIGHT / BACK BUTTON
+===================================== */
+
 .button-light,
 .btn-back {
-    background: #edf2ee;
-    color: #53665b;
+    background: #f0effa;
+    color: #19145B;
 }
 
 .button-light:hover,
 .btn-back:hover {
-    background: #dfe9e1;
+    background: #cfc9f7;
+    color: #19145B;
+    transform: translateY(-2px);
 }
+
+/* =====================================
+   FOCUS
+===================================== */
 
 button:focus-visible,
 a:focus-visible {
-    outline: 3px solid rgba(65, 128, 96, .25);
+    outline: 3px solid rgba(55, 48, 163, .25);
     outline-offset: 3px;
 }
 
-
-/* EXPORT BUTTON */
+/* =====================================
+   EXPORT BUTTON
+===================================== */
 
 .page-actions {
     display: flex;
@@ -80,28 +104,76 @@ a:focus-visible {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+
     min-height: 42px;
     padding: 0 18px;
-    border: 1px solid #205b49;
+
+    border: 1px solid #3730A3;
     border-radius: 8px;
+
     background: #ffffff;
-    color: #205b49;
+    color: #3730A3;
+
     text-decoration: none;
     font-size: 13px;
     font-weight: 600;
-    transition: .2s ease;
+
+    transition: all .2s ease;
 }
 
 .button-export:hover {
-    background: #f0f7f2;
+    background: #f0effa;
+    border-color: #19145B;
+    color: #19145B;
 }
 
+/* =====================================
+   ACCENT BUTTON
+===================================== */
+
+.button-accent {
+    background: #FF633E;
+    color: #ffffff;
+}
+
+.button-accent:hover {
+    background: #e95030;
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+/* =====================================
+   HIGHLIGHT BUTTON
+===================================== */
+
+.button-highlight {
+    background: #FFC95C;
+    color: #19145B;
+}
+
+.button-highlight:hover {
+    background: #f2b849;
+    color: #19145B;
+    transform: translateY(-2px);
+}
+
+/* =====================================
+   MOBILE
+===================================== */
+
 @media (max-width: 600px) {
+
     .page-actions {
         width: 100%;
     }
 
     .page-actions a {
         flex: 1;
+    }
+
+    .button,
+    .btn,
+    .nav-button {
+        width: auto;
     }
 }

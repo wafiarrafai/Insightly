@@ -3,7 +3,10 @@
    INSIGHTLY - RESPONSIVE
 ===================================== */
 
+/* TABLET */
+
 @media (max-width: 900px) {
+
     .page-header {
         align-items: flex-start;
     }
@@ -11,9 +14,22 @@
     .page-header h1 {
         font-size: 38px;
     }
+
+    .report-container {
+        width: 92%;
+    }
+
+    .report-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
+/* TABLET & MOBILE */
+
 @media (max-width: 700px) {
+
+    /* NAVBAR */
+
     .nav-wrapper {
         min-height: 75px;
     }
@@ -26,6 +42,8 @@
         padding: 0 14px;
     }
 
+    /* PAGE CONTENT */
+
     .page-content,
     .crud-page {
         padding: 45px 0 65px;
@@ -34,6 +52,8 @@
     .crud-page h1 {
         font-size: 34px;
     }
+
+    /* PAGE HEADER */
 
     .page-header {
         display: block;
@@ -46,6 +66,8 @@
     .page-header .button {
         margin-top: 20px;
     }
+
+    /* FORM PAGE */
 
     .form-page {
         padding: 40px 18px 60px;
@@ -72,14 +94,41 @@
         width: 100%;
     }
 
+    /* CRUD TABLE */
+
+    .table-wrapper {
+        overflow-x: auto;
+    }
+
+    /* FOOTER */
+
     .footer-wrapper {
         align-items: flex-start;
         flex-direction: column;
         gap: 25px;
     }
+
+    /* REPORT */
+
+    .report-page {
+        padding: 40px 0;
+    }
+
+    .report-filter {
+        gap: 12px;
+    }
+
+    .report-table-wrapper {
+        overflow-x: auto;
+    }
 }
 
+/* MOBILE */
+
 @media (max-width: 480px) {
+
+    /* GENERAL */
+
     .crud-page h1 {
         font-size: 29px;
     }
@@ -92,6 +141,18 @@
         width: 100%;
     }
 
+    /* NAVBAR */
+
+    .nav-wrapper {
+        width: 92%;
+    }
+
+    .logo {
+        font-size: 21px;
+    }
+
+    /* FORM */
+
     .form-container {
         padding: 22px 17px;
     }
@@ -99,6 +160,42 @@
     .form-container form > button,
     .form-container form > .btn-back {
         width: 100%;
-        margin: 7px 0 0;
+        margin: 7px 0;
+    }
+
+    /* CRUD */
+
+    .crud-page,
+    .page-content {
+        width: 92%;
+        padding: 35px 0 50px;
+    }
+
+    /* FOOTER */
+
+    .footer-wrapper {
+        gap: 20px;
+    }
+
+    /* REPORT */
+
+    .report-heading h1 {
+        font-size: 24px;
+    }
+
+    .report-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .report-stat {
+        padding: 18px;
+    }
+
+    .report-stat strong {
+        font-size: 24px;
+    }
+
+    .report-table-section {
+        padding: 15px;
     }
 }

@@ -156,9 +156,9 @@ include '../includes/header.php';
             </button>
 
             <?php if ($search !== ''): ?>
-            <a href="index.php" class="search-reset">
-                Reset
-            </a>
+                <a href="index.php" class="search-reset">
+                    Reset
+                </a>
             <?php endif; ?>
 
         </form>
@@ -183,87 +183,87 @@ include '../includes/header.php';
 
                     <?php if (mysqli_num_rows($query) > 0): ?>
 
-                    <?php $no = $offset + 1; ?>
+                        <?php $no = $offset + 1; ?>
 
-                    <?php while ($customer = mysqli_fetch_assoc($query)): ?>
+                        <?php while ($customer = mysqli_fetch_assoc($query)): ?>
 
-                    <tr>
+                            <tr>
 
-                        <td>
-                            <?= $no++; ?>
-                        </td>
+                                <td>
+                                    <?= $no++; ?>
+                                </td>
 
-                        <td>
-                            <strong>
-                                <?= htmlspecialchars($customer['customer_name']); ?>
-                            </strong>
-                        </td>
+                                <td>
+                                    <strong>
+                                        <?= htmlspecialchars($customer['customer_name']); ?>
+                                    </strong>
+                                </td>
 
-                        <td>
-                            <?= htmlspecialchars($customer['email']); ?>
-                        </td>
+                                <td>
+                                    <?= htmlspecialchars($customer['email']); ?>
+                                </td>
 
-                        <td>
-                            <?= htmlspecialchars($customer['phone'] ?? '-'); ?>
-                        </td>
+                                <td>
+                                    <?= htmlspecialchars($customer['phone'] ?? '-'); ?>
+                                </td>
 
-                        <td>
-                            <?= date(
+                                <td>
+                                    <?= date(
                                         'd M Y',
                                         strtotime($customer['created_at'])
                                     ); ?>
-                        </td>
+                                </td>
 
-                        <td>
-
-
-                            <div class="table-actions">
-
-                                <a href="edit.php?id=<?= (int) $customer['id']; ?>" class="action-edit">
-                                    Edit
-                                </a>
-
-                                <form action="delete.php" method="POST"
-                                    onsubmit="return confirm('Yakin ingin menghapus pelanggan ini?');">
-
-                                    <input type="hidden" name="id" value="<?= (int) $customer['id']; ?>">
-
-                                    <button type="submit" class="action-delete">
-                                        Hapus
-                                    </button>
-
-                                </form>
-
-                            </div>
+                                <td>
 
 
-                        </td>
+                                    <div class="table-actions">
 
-                    </tr>
+                                        <a href="edit.php?id=<?= (int) $customer['id']; ?>" class="action-edit">
+                                            Edit
+                                        </a>
 
-                    <?php endwhile; ?>
+                                        <form action="delete.php" method="POST"
+                                            onsubmit="return confirm('Yakin ingin menghapus pelanggan ini?');">
+
+                                            <input type="hidden" name="id" value="<?= (int) $customer['id']; ?>">
+
+                                            <button type="submit" class="action-delete">
+                                                Hapus
+                                            </button>
+
+                                        </form>
+
+                                    </div>
+
+
+                                </td>
+
+                            </tr>
+
+                        <?php endwhile; ?>
 
                     <?php else: ?>
 
-                    <tr>
+                        <tr>
 
-                        <td colspan="6" class="empty-state">
+                            <td colspan="6" class="empty-state">
 
-                            <div>
-                                Belum ada data pelanggan.
-                            </div>
+                                <div>
+                                    Belum ada data pelanggan.
+                                </div>
 
-                            <p>
-                                Tambahkan pelanggan pertama kamu untuk mulai menggunakan Insightly.
-                            </p>
+                                <p>
+                                    Tambahkan pelanggan pertama kamu untuk mulai menggunakan Insightly.
+                                </p>
 
-                            <a href="create.php" class="button button-dark">
-                                Tambah Pelanggan
-                            </a>
+                                <a href="create.php" class="button button-dark">
+                                    Tambah Pelanggan
+                                </a>
 
-                        </td>
+                            </td>
 
-                    </tr>
+                        </tr>
 
                     <?php endif; ?>
 
@@ -274,46 +274,46 @@ include '../includes/header.php';
         </div>
         <?php if ($totalRows > 0): ?>
 
-        <div class="pagination">
+            <div class="pagination">
 
-            <div class="pagination-info">
-                Menampilkan
-                <?= $offset + 1; ?>–<?= min($offset + $limit, $totalRows); ?>
-                dari <?= $totalRows; ?> pelanggan
+                <div class="pagination-info">
+                    Menampilkan
+                    <?= $offset + 1; ?>–<?= min($offset + $limit, $totalRows); ?>
+                    dari <?= $totalRows; ?> pelanggan
+                </div>
+
+                <div class="pagination-links">
+
+                    <?php $queryString = $_GET; ?>
+
+                    <?php if ($page > 1): ?>
+                        <?php $queryString['page'] = $page - 1; ?>
+
+                        <a href="?<?= htmlspecialchars(http_build_query($queryString)); ?>">
+                            Sebelumnya &raquo;
+                        </a>
+                    <?php endif; ?>
+
+                    <?php for ($i = 1; $i <= $totalPages; $i++): ?>
+                        <?php $queryString['page'] = $i; ?>
+
+                        <a href="?<?= htmlspecialchars(http_build_query($queryString)); ?>"
+                            class="<?= $page === $i ? 'active' : ''; ?>">
+                            <?= $i; ?>
+                        </a>
+                    <?php endfor; ?>
+
+                    <?php if ($page < $totalPages): ?>
+                        <?php $queryString['page'] = $page + 1; ?>
+
+                        <a href="?<?= htmlspecialchars(http_build_query($queryString)); ?>">
+                            Selanjutnya &raquo;
+                        </a>
+                    <?php endif; ?>
+
+                </div>
+
             </div>
-
-            <div class="pagination-links">
-
-                <?php $queryString = $_GET; ?>
-
-                <?php if ($page > 1): ?>
-                <?php $queryString['page'] = $page - 1; ?>
-
-                <a href="?<?= htmlspecialchars(http_build_query($queryString)); ?>">
-                    Sebelumnya
-                </a>
-                <?php endif; ?>
-
-                <?php for ($i = 1; $i <= $totalPages; $i++): ?>
-                <?php $queryString['page'] = $i; ?>
-
-                <a href="?<?= htmlspecialchars(http_build_query($queryString)); ?>"
-                    class="<?= $page === $i ? 'active' : ''; ?>">
-                    <?= $i; ?>
-                </a>
-                <?php endfor; ?>
-
-                <?php if ($page < $totalPages): ?>
-                <?php $queryString['page'] = $page + 1; ?>
-
-                <a href="?<?= htmlspecialchars(http_build_query($queryString)); ?>">
-                    Selanjutnya
-                </a>
-                <?php endif; ?>
-
-            </div>
-
-        </div>
 
         <?php endif; ?>
 

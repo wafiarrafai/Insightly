@@ -1,3 +1,8 @@
+
+/* =====================================
+   INSIGHTLY - BASE
+===================================== */
+
 * {
     margin: 0;
     padding: 0;
@@ -9,9 +14,13 @@ html {
 }
 
 body {
+    margin: 0;
+    padding: 0;
+
+    background: #f8f7ff;
+    color: #19145B;
+
     font-family: Arial, sans-serif;
-    background: #f8faf8;
-    color: #17201d;
 }
 
 a {
@@ -25,7 +34,7 @@ a {
 }
 
 .section-label {
-    color: #356356;
+    color: #3730A3;
     font-size: 11px;
     font-weight: 700;
     letter-spacing: 1.5px;

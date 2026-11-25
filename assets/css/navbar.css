@@ -1,59 +1,64 @@
+
+/* =====================================
+   INSIGHTLY - NAVBAR
+===================================== */
+
+/* NAVBAR */
 .navbar {
+    width: 100%;
     background: #ffffff;
     border-bottom: 1px solid #e3e7e4;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
+/* NAVBAR WRAPPER */
+
 .nav-wrapper {
+    width: min(1380px, 90%);
     min-height: 88px;
+    margin: 0 auto;
 
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
+/* LOGO */
+
 .logo {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
 
-    font-size: 22px;
+    color: #211A68;
+    font-size: 20px;
     font-weight: 700;
+    text-decoration: none;
 }
 
-.logo-mark {
-    width: 34px;
-    height: 34px;
-
-    display: grid;
-    place-items: center;
-
-    border-radius: 8px;
-
-    background: #174d43;
-    color: #ffffff;
-
-    font-size: 18px;
+.logo-image {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    display: block;
 }
+
+/* NAVIGATION MENU */
 
 .nav-menu {
     display: flex;
+    align-items: center;
     gap: 35px;
-
-    color: #53605b;
-    font-size: 14px;
 }
-
-.nav-menu a:hover {
-    color: #174d43;
-}
-
-
-/* NAVBAR ACTIVE MENU */
 
 .nav-menu a {
-    color: #40534a;
+    color: #53605b;
+    font-size: 14px;
     font-weight: 400;
     text-decoration: none;
+
     transition: color 0.2s ease;
 }
 
@@ -66,19 +71,85 @@
     font-weight: 700;
 }
 
-.logo {
+/* NAVBAR BUTTON / ACTION */
+
+.nav-actions {
     display: flex;
     align-items: center;
     gap: 12px;
+}
+
+/* RESPONSIVE NAVBAR */
+
+@media (max-width: 768px) {
+
+    .nav-wrapper {
+        min-height: 75px;
+    }
+
+    .logo {
+        font-size: 23px;
+    }
+
+    .logo-image {
+        width: 40px;
+        height: 40px;
+    }
+
+    .nav-menu {
+        gap: 16px;
+    }
+
+    .nav-menu a {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .nav-wrapper {
+        width: 92%;
+        flex-wrap: wrap;
+        padding: 15px 0;
+        gap: 15px;
+    }
+
+    .logo {
+        font-size: 21px;
+    }
+
+    .nav-menu {
+        width: 100%;
+        justify-content: space-between;
+        gap: 10px;
+        overflow-x: auto;
+        padding-bottom: 5px;
+    }
+
+    .nav-menu a {
+        white-space: nowrap;
+        font-size: 12px;
+    }
+}
+
+.nav-menu a {
+    color: #53605b;
+    font-size: 14px;
+    font-weight: 400;
     text-decoration: none;
-    color: #17231e;
-    font-size: 28px;
+    transition: color 0.2s ease;
+}
+
+.nav-menu a:hover {
+    color: #29217F;
+}
+
+.nav-menu a.active {
+    color: #29217F;
     font-weight: 700;
 }
 
-.logo-image {
-    width: 48px;
-    height: 48px;
-    object-fit: contain;
-    display: block;
+.nav-menu a:active,
+.nav-menu a:focus {
+    color: #29217F;
 }

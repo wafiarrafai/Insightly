@@ -5,38 +5,24 @@
 
     <meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Insightly — Kelola Feedback Pelanggan</title>
 
 
     <!-- CSS -->
 
-    <link
-        rel="stylesheet"
-        href="assets/css/base.css">
+    <link rel="stylesheet" href="assets/css/base.css">
 
-    <link
-        rel="stylesheet"
-        href="assets/css/navbar.css">
+    <link rel="stylesheet" href="assets/css/navbar.css">
 
-    <link
-        rel="stylesheet"
-        href="assets/css/buttons.css">
+    <link rel="stylesheet" href="assets/css/buttons.css">
 
-    <link
-        rel="stylesheet"
-        href="assets/css/landing.css">
+    <link rel="stylesheet" href="assets/css/landing.css">
 
-    <link
-        rel="stylesheet"
-        href="assets/css/footer.css">
+    <link rel="stylesheet" href="assets/css/footer.css">
 
-    <link
-        rel="stylesheet"
-        href="assets/css/responsive.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
 
 </head>
 
@@ -98,17 +84,12 @@
 
                 <div class="hero-actions">
 
-                    <a
-                        href="feedback/create.php"
-                        class="button button-dark">
+                    <a href="feedback/create.php" class="button button-dark">
                         Tambah Feedback
-                        <span>→</span>
                     </a>
 
 
-                    <a
-                        href="customers/index.php"
-                        class="button button-light">
+                    <a href="customers/index.php" class="button button-light">
                         Lihat Pelanggan
                     </a>
 
@@ -128,7 +109,6 @@
         <section class="overview">
 
             <div class="container">
-
 
                 <div class="overview-header">
 
@@ -225,45 +205,6 @@
 
                     </div>
 
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =========================
-             CTA
-        ========================== -->
-
-        <section class="cta">
-
-            <div class="container">
-
-                <div class="cta-box">
-
-                    <div>
-
-                        <span class="section-label">
-                            MULAI DARI DATA
-                        </span>
-
-                        <h2>
-                            Siap memahami
-                            pelanggan lebih baik?
-                        </h2>
-
-                    </div>
-
-
-                    <a
-                        href="feedback/create.php"
-                        class="button button-dark">
-                        Tambah Feedback
-                        <span>→</span>
-                    </a>
 
                 </div>
 

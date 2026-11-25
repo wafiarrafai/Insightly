@@ -1,6 +1,14 @@
+
 /* =====================================
    INSIGHTLY - CRUD PAGE
+   COLOR PALETTE
+
+   Navy   : #16115E
+   Purple : #3730AA
+   Coral  : #FF653F
+   Yellow : #FFC85C
 ===================================== */
+
 
 /* =====================================
    PAGE LAYOUT
@@ -19,21 +27,19 @@
    PAGE HEADER
 ===================================== */
 
-.crud-page h1,
-.page-header h1 {
-    color: #183c32;
+.crud-page h1 {
+    color: #16115E;
     font-size: clamp(32px, 4vw, 46px);
     font-weight: 700;
     letter-spacing: -1.8px;
-    margin: 0 0 12px;
+    margin-bottom: 12px;
 }
 
-.crud-page > p,
-.page-header p {
-    color: #7b8982;
+.crud-page > p {
+    color: #77758C;
     font-size: 14px;
+    margin-bottom: 30px;
     line-height: 1.7;
-    margin: 0 0 30px;
 }
 
 .page-header {
@@ -42,6 +48,30 @@
     align-items: center;
     gap: 20px;
     margin-bottom: 35px;
+}
+
+.page-header h1 {
+    color: #16115E;
+    font-size: 46px;
+    letter-spacing: -2px;
+    margin-bottom: 0;
+    position: relative;
+}
+
+.page-header h1::after {
+    content: "";
+    display: block;
+    width: 48px;
+    height: 4px;
+    margin-top: 12px;
+    background: #FF653F;
+    border-radius: 10px;
+}
+
+.page-header p {
+    margin-top: 12px;
+    color: #77758C;
+    font-size: 14px;
 }
 
 
@@ -56,36 +86,37 @@
     padding: 13px 20px;
     margin-bottom: 25px;
 
-    background: #205b49;
-    color: #fff;
+    background: #3730AA;
+    color: #ffffff;
 
     border-radius: 8px;
     font-size: 13px;
     font-weight: 600;
-    text-decoration: none;
 
     transition: 0.25s ease;
 }
 
 .crud-page > .btn:hover {
-    background: #174537;
+    background: #FF653F;
+    color: #ffffff;
     transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 101, 63, 0.2);
 }
 
 
 /* =====================================
-   TABLE
+   TABLE CONTAINER
 ===================================== */
 
 .table-container {
     width: 100%;
     overflow-x: auto;
 
-    background: #fff;
-    border: 1px solid #e5ebe7;
+    background: #ffffff;
+    border: 1px solid #E7E5F4;
     border-radius: 14px;
 
-    box-shadow: 0 8px 30px rgba(30, 65, 49, 0.045);
+    box-shadow: 0 8px 30px rgba(22, 17, 94, 0.045);
 }
 
 table {
@@ -95,30 +126,31 @@ table {
 }
 
 thead {
-    background: #f4f8f5;
+    background: #F5F3FF;
 }
 
 th {
     padding: 18px 20px;
 
-    color: #718078;
+    color: #77758C;
     font-size: 11px;
     font-weight: 700;
+
     letter-spacing: 0.8px;
     text-align: left;
     text-transform: uppercase;
 
-    border-bottom: 1px solid #e8eee9;
+    border-bottom: 1px solid #E7E5F4;
 }
 
 td {
     padding: 19px 20px;
 
-    color: #52635a;
+    color: #5E5A83;
     font-size: 13px;
     line-height: 1.6;
 
-    border-bottom: 1px solid #edf1ee;
+    border-bottom: 1px solid #F0EFFF;
 }
 
 tbody tr {
@@ -126,7 +158,11 @@ tbody tr {
 }
 
 tbody tr:hover {
-    background: #f8fbf8;
+    background: #FFF8F5;
+}
+
+tbody tr:hover td:first-child {
+    border-left: 3px solid #FF653F;
 }
 
 tbody tr:last-child td {
@@ -134,11 +170,11 @@ tbody tr:last-child td {
 }
 
 td:first-child {
-    color: #929d96;
+    color: #77758C;
 }
 
 td strong {
-    color: #183c32;
+    color: #16115E;
 }
 
 
@@ -150,7 +186,6 @@ td strong {
     display: flex;
     align-items: center;
     gap: 8px;
-    white-space: nowrap;
 }
 
 .table-actions a,
@@ -164,29 +199,35 @@ td a {
     border-radius: 6px;
     font-size: 11px;
     font-weight: 600;
-    text-decoration: none;
 
     transition: 0.2s ease;
 }
 
+
+/* EDIT */
+
 .action-edit,
 td a[href*="edit.php"] {
-    background: #edf5ef;
-    color: #286247;
+    background: #F0EFFF;
+    color: #3730AA;
 }
 
 .action-edit:hover,
 td a[href*="edit.php"]:hover {
-    background: #dcece0;
+    background: #E7E5F4;
+    color: #16115E;
 }
 
+
+/* DELETE */
+
 .action-delete {
-    background: #fbefed;
-    color: #b44f47;
+    background: #FFF0EB;
+    color: #FF653F;
 }
 
 .action-delete:hover {
-    background: #f5deda;
+    background: #FFE0D5;
 }
 
 
@@ -205,8 +246,8 @@ td form button {
     border: none;
     border-radius: 6px;
 
-    background: #fbefed;
-    color: #b44f47;
+    background: #FFF0EB;
+    color: #FF653F;
 
     font-size: 11px;
     font-weight: 600;
@@ -216,7 +257,8 @@ td form button {
 }
 
 td form button:hover {
-    background: #f5deda;
+    background: #FFE0D5;
+    transform: translateY(-1px);
 }
 
 
@@ -230,14 +272,14 @@ td form button:hover {
 }
 
 .empty-state div {
-    color: #284c3d;
+    color: #3730AA;
     font-weight: 600;
 }
 
 .empty-state p {
     margin: 8px auto 22px;
 
-    color: #89978f;
+    color: #77758C;
     font-size: 13px;
 }
 
@@ -250,33 +292,37 @@ td form button:hover {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    gap: 12px;
 
+    gap: 12px;
     width: 100%;
     box-sizing: border-box;
 
     margin-bottom: 25px;
     padding: 20px;
 
-    background: #fff;
-    border: 1px solid #e1e9e4;
+    background: #ffffff;
+    border: 1px solid #E7E5F4;
     border-radius: 16px;
 }
 
 
-/* DATE RANGE */
+/* =====================================
+   DATE RANGE
+===================================== */
 
 .filter-form .date-filter {
     display: flex;
     align-items: center;
-    gap: 8px;
 
     flex: 0 1 390px;
     min-width: 0;
+
+    gap: 8px;
 }
 
 .filter-form .date-filter input {
     flex: 1;
+
     width: 0;
     min-width: 0;
     height: 48px;
@@ -284,25 +330,36 @@ td form button:hover {
     box-sizing: border-box;
     padding: 0 10px;
 
-    border: 1px solid #e1e9e4;
+    background: #ffffff;
+
+    border: 1px solid #E7E5F4;
     border-radius: 10px;
 
-    background: #fff;
-    color: #285b49;
+    color: #5E5A83;
 
     font-family: inherit;
     font-size: 13px;
+
+    outline: none;
+    transition: 0.2s ease;
+}
+
+.filter-form .date-filter input:focus {
+    border-color: #FF653F;
+    box-shadow: 0 0 0 3px rgba(255, 101, 63, 0.10);
 }
 
 .filter-form .date-filter span {
     flex-shrink: 0;
 
-    color: #7b8580;
+    color: #77758C;
     font-size: 13px;
 }
 
 
-/* SEARCH */
+/* =====================================
+   SEARCH
+===================================== */
 
 .filter-form .filter-search {
     flex: 1 1 240px;
@@ -316,18 +373,33 @@ td form button:hover {
     box-sizing: border-box;
     padding: 0 16px;
 
-    border: 1px solid #e1e9e4;
+    background: #ffffff;
+
+    border: 1px solid #E7E5F4;
     border-radius: 10px;
+
+    color: #5E5A83;
 
     font-family: inherit;
     font-size: 14px;
+
+    outline: none;
+    transition: 0.2s ease;
+}
+
+.filter-form .filter-search input:focus {
+    border-color: #FF653F;
+    box-shadow: 0 0 0 3px rgba(255, 101, 63, 0.10);
 }
 
 
-/* SELECT */
+/* =====================================
+   FILTER SELECT
+===================================== */
 
 .filter-form select {
     flex: 0 1 175px;
+
     width: 175px;
     min-width: 0;
     height: 48px;
@@ -335,16 +407,24 @@ td form button:hover {
     box-sizing: border-box;
     padding: 0 32px 0 12px;
 
-    border: 1px solid #e1e9e4;
+    background-color: #ffffff;
+
+    border: 1px solid #E7E5F4;
     border-radius: 10px;
 
-    background: #fff;
-    color: #285b49;
+    color: #3730AA;
 
     font-family: inherit;
     font-size: 13px;
 
     cursor: pointer;
+    outline: none;
+    transition: 0.2s ease;
+}
+
+.filter-form select:focus {
+    border-color: #FF653F;
+    box-shadow: 0 0 0 3px rgba(255, 101, 63, 0.10);
 }
 
 .filter-form select[name="sort"] {
@@ -353,7 +433,9 @@ td form button:hover {
 }
 
 
-/* FILTER BUTTON */
+/* =====================================
+   FILTER BUTTON
+===================================== */
 
 .filter-form button {
     flex: 0 0 auto;
@@ -364,46 +446,44 @@ td form button:hover {
     border: none;
     border-radius: 8px;
 
-    background: #205b49;
-    color: #fff;
+    background: #3730AA;
+    color: #ffffff;
 
     font-size: 13px;
     font-weight: 600;
 
     cursor: pointer;
     white-space: nowrap;
+
+    transition: 0.25s ease;
 }
 
 .filter-form button:hover {
-    background: #174537;
+    background: #FF653F;
+    transform: translateY(-1px);
 }
 
 
-/* RESET */
+/* =====================================
+   FILTER RESET
+===================================== */
 
 .filter-form .filter-reset {
     flex: 0 0 auto;
 
     padding: 10px 8px;
 
-    color: #718078;
+    color: #77758C;
+
     font-size: 14px;
     text-decoration: none;
-
     white-space: nowrap;
+
+    transition: 0.2s ease;
 }
 
 .filter-form .filter-reset:hover {
-    color: #205b49;
-}
-
-
-/* FILTER FOCUS */
-
-.filter-form input:focus,
-.filter-form select:focus {
-    outline: none;
-    border-color: #205b49;
+    color: #FF653F;
 }
 
 
@@ -414,15 +494,18 @@ td form button:hover {
 .customer-search {
     display: flex;
     align-items: center;
-    gap: 12px;
 
+    gap: 12px;
     margin-bottom: 25px;
     padding: 16px;
 
-    background: #fff;
-    border: 1px solid #e5ebe7;
+    background: #ffffff;
+    border: 1px solid #E7E5F4;
     border-radius: 12px;
 }
+
+
+/* SEARCH INPUT */
 
 .search-input {
     flex: 1;
@@ -436,18 +519,28 @@ td form button:hover {
     box-sizing: border-box;
     padding: 0 15px;
 
-    border: 1px solid #e1e8e3;
+    background: #ffffff;
+
+    border: 1px solid #E7E5F4;
     border-radius: 8px;
+
+    color: #5E5A83;
 
     outline: none;
 
-    font-family: inherit;
     font-size: 13px;
+    font-family: inherit;
+
+    transition: 0.2s ease;
 }
 
 .search-input input:focus {
-    border-color: #205b49;
+    border-color: #FF653F;
+    box-shadow: 0 0 0 3px rgba(255, 101, 63, 0.10);
 }
+
+
+/* CUSTOMER SEARCH BUTTON */
 
 .customer-search button {
     height: 44px;
@@ -456,21 +549,23 @@ td form button:hover {
     border: none;
     border-radius: 8px;
 
-    background: #205b49;
-    color: #fff;
+    background: #3730AA;
+    color: #ffffff;
 
     font-size: 13px;
     font-weight: 600;
 
     cursor: pointer;
+    transition: 0.25s ease;
 }
 
 .customer-search button:hover {
-    background: #174537;
+    background: #FF653F;
+    transform: translateY(-1px);
 }
 
 
-/* CUSTOMER SELECT */
+/* CUSTOMER SORT */
 
 .customer-search select {
     min-width: 155px;
@@ -478,11 +573,12 @@ td form button:hover {
 
     padding: 0 42px 0 16px;
 
-    border: 1px solid #e1e9e4;
+    background: #ffffff;
+
+    border: 1px solid #E7E5F4;
     border-radius: 12px;
 
-    background: #fff;
-    color: #285b49;
+    color: #3730AA;
 
     font-family: inherit;
     font-size: 14px;
@@ -490,21 +586,42 @@ td form button:hover {
 
     cursor: pointer;
     outline: none;
+
+    appearance: none;
+    -webkit-appearance: none;
+
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%233730AA' stroke-width='2' viewBox='0 0 24 24'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 16px;
+
+    transition: 0.2s ease;
 }
 
 .customer-search select:hover,
 .customer-search select:focus {
-    border-color: #285b49;
+    border-color: #FF653F;
 }
 
+.customer-search select:focus {
+    box-shadow: 0 0 0 3px rgba(255, 101, 63, 0.10);
+}
+
+
+/* SEARCH RESET */
+
 .search-reset {
-    color: #718078;
+    color: #77758C;
+
     font-size: 13px;
     text-decoration: none;
+
+    transition: 0.2s ease;
 }
 
 .search-reset:hover {
-    color: #205b49;
+    color: #FF653F;
 }
 
 
@@ -512,82 +629,48 @@ td form button:hover {
    PAGINATION
 ===================================== */
 
-/*
-   PENTING:
-   Pagination dibuat satu baris.
-   Jangan pakai flex-direction: column.
-*/
-
 .pagination {
-    display: flex !important;
-
-    flex-direction: row !important;
-    flex-wrap: nowrap !important;
-
-    align-items: center;
+    display: flex;
     justify-content: center;
+    align-items: center;
+
+    flex-direction: row;
+    flex-wrap: nowrap;
 
     gap: 10px;
 
     width: 100%;
     margin: 30px 0 40px;
     padding: 0;
-
-    box-sizing: border-box;
 }
 
 
-/* Kalau ada info + tombol pagination */
-
-.pagination-info {
-    color: #7b8580;
-    font-size: 13px;
-}
-
-
-/* Container nomor halaman */
-
-.pagination-links {
-    display: flex !important;
-
-    flex-direction: row !important;
-    flex-wrap: nowrap !important;
-
-    align-items: center;
-    justify-content: center;
-
-    gap: 10px;
-}
-
-
-/* Semua tombol pagination */
+/* PAGINATION BUTTON */
 
 .pagination a,
-.pagination span,
-.pagination-links a {
-    display: inline-flex !important;
-
-    flex: 0 0 auto !important;
+.pagination span {
+    display: inline-flex;
 
     align-items: center;
     justify-content: center;
 
-    width: auto;
+    flex: 0 0 auto;
+
     min-width: 44px;
     height: 44px;
 
     box-sizing: border-box;
     padding: 0 14px;
 
-    border: 1px solid #dce8e0;
+    background: #ffffff;
+
+    border: 1px solid #E7E5F4;
     border-radius: 11px;
 
-    background: #fff;
-    color: #205b49;
+    color: #3730AA;
 
     font-size: 14px;
     font-weight: 600;
-    line-height: 1;
 
     text-decoration: none;
     white-space: nowrap;
@@ -596,28 +679,107 @@ td form button:hover {
 }
 
 
-/* Hover */
+/* PAGINATION HOVER */
 
-.pagination a:hover,
-.pagination-links a:hover {
-    background: #edf5ef;
-    border-color: #205b49;
+.pagination a:hover {
+    background: #FFF0EB;
+    border-color: #FF653F;
+    color: #FF653F;
 }
 
 
-/* Active */
+/* PAGINATION ACTIVE */
 
 .pagination .active,
-.pagination .current,
-.pagination-links a.active {
-    background: #205b49;
-    border-color: #205b49;
-    color: #fff;
+.pagination .current {
+    background: #FF653F;
+    border-color: #FF653F;
+    color: #ffffff;
 }
 
 
 /* =====================================
-   RESPONSIVE
+   PAGINATION LINKS
+===================================== */
+
+.pagination-links {
+    display: flex !important;
+
+    flex-direction: row !important;
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    flex-wrap: nowrap;
+}
+
+.pagination-links a {
+    display: inline-flex;
+
+    flex: 0 0 auto;
+
+    align-items: center;
+    justify-content: center;
+
+    min-width: 44px;
+    height: 44px;
+
+    box-sizing: border-box;
+    padding: 0 14px;
+
+    background: #ffffff;
+
+    border: 1px solid #E7E5F4;
+    border-radius: 11px;
+
+    color: #3730AA;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    text-decoration: none;
+    white-space: nowrap;
+
+    transition: 0.2s ease;
+}
+
+.pagination-links a:hover {
+    background: #FFF0EB;
+    border-color: #FF653F;
+    color: #FF653F;
+}
+
+.pagination-links a.active {
+    background: #FF653F;
+    color: #ffffff;
+    border-color: #FF653F;
+}
+
+
+/* =====================================
+   PAGINATION INFO
+===================================== */
+
+.pagination-info {
+    color: #77758C;
+    font-size: 13px;
+}
+
+
+/* =====================================
+   HIGHLIGHT / STATUS
+===================================== */
+
+.highlight,
+.badge-highlight {
+    background: #FFC85C;
+    color: #16115E;
+}
+
+
+/* =====================================
+   RESPONSIVE - TABLET
 ===================================== */
 
 @media (max-width: 1100px) {
@@ -632,19 +794,9 @@ td form button:hover {
 }
 
 
-@media (max-width: 700px) {
-
-    .date-filter {
-        width: 100%;
-        flex-wrap: wrap;
-    }
-
-    .date-filter input {
-        flex: 1;
-        min-width: 0;
-    }
-}
-
+/* =====================================
+   RESPONSIVE - MOBILE
+===================================== */
 
 @media (max-width: 650px) {
 
@@ -668,35 +820,59 @@ td form button:hover {
         flex: 1;
     }
 
-    .customer-search {
+    .page-header {
         flex-direction: column;
-        align-items: stretch;
+        align-items: flex-start;
     }
 
-    .customer-search button,
+    .page-header h1 {
+        font-size: 36px;
+    }
+}
+
+
+/* =====================================
+   RESPONSIVE - CUSTOMER SEARCH
+===================================== */
+
+@media (max-width: 600px) {
+
+    .customer-search {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .customer-search button {
+        width: 100%;
+    }
+
     .customer-search select {
         width: 100%;
     }
 
-    /*
-       Pagination tetap horizontal.
-       Kalau layar sempit, halaman boleh scroll,
-       bukan turun ke bawah satu-satu.
-    */
-
     .pagination {
-        justify-content: flex-start;
-        overflow-x: auto;
-        padding-bottom: 5px;
+        flex-wrap: wrap;
     }
 
     .pagination-links {
-        flex-wrap: nowrap !important;
+        flex-wrap: wrap;
+    }
+}
+
+
+/* =====================================
+   RESPONSIVE - DATE FILTER
+===================================== */
+
+@media (max-width: 700px) {
+
+    .filter-form .date-filter {
+        width: 100%;
+        flex-wrap: wrap;
     }
 
-    .pagination a,
-    .pagination span,
-    .pagination-links a {
-        flex-shrink: 0 !important;
+    .filter-form .date-filter input {
+        flex: 1;
+        min-width: 0;
     }
 }

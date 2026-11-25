@@ -24,7 +24,7 @@ $headerActionLink = $headerActionLink ?? 'feedback/create.php';
     <link rel="stylesheet" href="<?= $basePath; ?>assets/css/form.css">
 
     <?php if (!empty($extraCss)): ?>
-        <link rel="stylesheet" href="<?= $basePath . $extraCss; ?>">
+    <link rel="stylesheet" href="<?= $basePath . $extraCss; ?>">
     <?php endif; ?>
 </head>
 
@@ -32,15 +32,11 @@ $headerActionLink = $headerActionLink ?? 'feedback/create.php';
     <header class="navbar">
         <div class="container nav-wrapper">
             <a href="<?= $basePath ?>index.php" class="logo">
-                <img
-                    src="<?= $basePath ?>assets/images/insightly-logo.png"
-                    alt="Insightly Logo"
-                    class="logo-image">
-                <span>insightly</span>
+                <img src="<?= $basePath ?>assets/images/insightly-logo.png" alt="Insightly Logo" class="logo-image">
+                <span class="nama-logo">insightly</span>
             </a>
             <nav class="nav-menu">
-                <a href="<?= $basePath; ?>index.php"
-                    class="<?= $currentPage === 'home' ? 'active' : ''; ?>">
+                <a href="<?= $basePath; ?>index.php" class="<?= $currentPage === 'home' ? 'active' : ''; ?>">
                     Beranda
                 </a>
                 <a href="<?= $basePath; ?>customers/index.php"
