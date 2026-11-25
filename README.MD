@@ -37,6 +37,11 @@ Website ini ditujukan untuk penggunaan internal perusahaan/brand, sehingga pelan
    http://localhost/insightly/
    ```
 
+Link Website:
+```text
+https://insightly-web.site.je/
+```
+
 ## Penggunaan
 
 Insightly digunakan oleh pihak perusahaan/brand untuk mencatat dan mengelola feedback pelanggan. Data feedback yang terkumpul dapat dilihat melalui halaman Feedback dan dianalisis melalui halaman Insights.
